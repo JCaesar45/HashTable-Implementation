@@ -1,0 +1,125 @@
+// HashTable class implementation
+class HashTable {
+  constructor() {
+    this.collection = {};
+  }
+
+  hash(key) {
+    return Array.from(key).reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  }
+
+  add(key, value) {
+    const hashedKey = this.hash(key);
+    if (!this.collection[hashedKey]) {
+      this.collection[hashedKey] = {};
+    }
+    this.collection[hashedKey][key] = value;
+    this.display(); // update visualization
+  }
+
+  remove(key) {
+    const hashedKey = this.hash(key);
+    if (this.collection[hashedKey] && this.collection[hashedKey][key]) {
+      delete this.collection[hashedKey][key];
+      if (Object.keys(this.collection[hashedKey]).length === 0) {
+        delete this.collection[hashedKey];
+      }
+      this.display(); // update visualization
+    }
+  }
+
+  lookup(key) {
+    const hashedKey = this.hash(key);
+    if (this.collection[hashedKey] && this.collection[hashedKey][key]) {
+      return this.collection[hashedKey][key];
+    }
+    return null;
+  }
+
+  display() {
+    const container = document.getElementById('hashTableDisplay');
+    container.innerHTML = '';
+
+    if (Object.keys(this.collection).length === 0) {
+      container.innerHTML = '<p style="text-align:center;">Hash Table is empty</p>';
+      return;
+    }
+
+    for (const hashKey in this.collection) {
+      const nested = this.collection[hashKey];
+      const hashDiv = document.createElement('div');
+      hashDiv.className = 'hash-bucket';
+
+      const title = document.createElement('h4');
+      title.textContent = `Index ${hashKey}`;
+      hashDiv.appendChild(title);
+
+      for (const key in nested) {
+        const pairDiv = document.createElement('div');
+        pairDiv.className = 'pair';
+
+        pairDiv.innerHTML = `<strong>${key}</strong>: ${nested[key]}`;
+        hashDiv.appendChild(pairDiv);
+      }
+
+      container.appendChild(hashDiv);
+    }
+  }
+}
+
+// Instantiate HashTable
+const ht = new HashTable();
+
+// DOM Elements
+const keyInput = document.getElementById('keyInput');
+const valueInput = document.getElementById('valueInput');
+const addBtn = document.getElementById('addBtn');
+const removeBtn = document.getElementById('removeBtn');
+const lookupBtn = document.getElementById('lookupBtn');
+const resultDiv = document.getElementById('result');
+
+// Event Listeners
+addBtn.addEventListener('click', () => {
+  const key = keyInput.value.trim();
+  const value = valueInput.value.trim();
+  if (key && value) {
+    ht.add(key, value);
+    resultDiv.textContent = `Added (${key}: ${value})`;
+    clearInputs();
+  } else {
+    resultDiv.textContent = 'Please enter both key and value.';
+  }
+});
+
+removeBtn.addEventListener('click', () => {
+  const key = keyInput.value.trim();
+  if (key) {
+    ht.remove(key);
+    resultDiv.textContent = `Removed key: ${key}`;
+    clearInputs();
+  } else {
+    resultDiv.textContent = 'Please enter a key to remove.';
+  }
+});
+
+lookupBtn.addEventListener('click', () => {
+  const key = keyInput.value.trim();
+  if (key) {
+    const value = ht.lookup(key);
+    if (value !== null) {
+      resultDiv.textContent = `Value for "${key}": ${value}`;
+    } else {
+      resultDiv.textContent = `Key "${key}" not found.`;
+    }
+  } else {
+    resultDiv.textContent = 'Please enter a key to lookup.';
+  }
+});
+
+function clearInputs() {
+  keyInput.value = '';
+  valueInput.value = '';
+}
+
+// Initial display
+ht.display();
