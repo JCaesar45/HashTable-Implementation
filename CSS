@@ -1,0 +1,178 @@
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #ffd700;
+  letter-spacing: 2px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+/* Introduction Section */
+.intro {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #ffe135;
+}
+
+.intro p {
+  font-size: 1.1em;
+  color: #ccc;
+}
+
+/* Demo Section */
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Hash Table Display */
+.hash-table-container {
+  flex: 1 1 45%;
+  min-width: 300px;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.hash-table-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  color: #ffd700;
+}
+
+#hashTableDisplay {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+/* Controls Section */
+.controls {
+  flex: 1 1 45%;
+  min-width: 300px;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls h3 {
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  color: #ffd700;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  width: 120px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px #ffd700;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffd700;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e6c200;
+}
+
+/* Result Display */
+.result {
+  min-height: 50px;
+  padding: 10px;
+  width: 100%;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  font-size: 1.1em;
+  color: #fff;
+  text-align: center;
+}
+
+/* Footer Styles */
+footer {
+  margin-top: 50px;
+  text-align: center;
+  padding: 20px;
+  font-size: 1em;
+  color: #aaa;
+}
